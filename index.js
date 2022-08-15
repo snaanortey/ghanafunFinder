@@ -15,6 +15,7 @@ const boredActivities = [
   "start a YouTube channel",
   "Take a stroll on Oxford street in Osu",
   "Go to the Labadi beach",
+  "order dominos pizza and Netflix and Chill"
 ];
 
 // Listen for http get request on /
