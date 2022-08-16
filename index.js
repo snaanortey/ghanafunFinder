@@ -6,7 +6,7 @@ const data = require("./data.json");
 const boredAppServer = express();
 const port = 3000;
 
-// Listen for http get request on /
+// Listen for http get request on /random
 boredAppServer.get("/random", function (request, response) {
   const randomIndex = Math.round(Math.random() * (data.length - 1));
 
