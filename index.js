@@ -6,16 +6,60 @@ const port = 3000;
 
 // Creating an array of strings of activities that people can do
 const boredActivities = [
-  "play catan at home",
-  "Go for terrific Tuesday",
-  "Have sex",
-  "Take a fucking walk",
-  "ride a bicycle",
-  "watch Netflix",
-  "start a YouTube channel",
-  "Take a stroll on Oxford street in Osu",
-  "Go to the Labadi beach",
-  "order dominos pizza and Netflix and Chill"
+  {
+    description: "Play catan at home",
+    referenceLink: [
+      {
+        text: "Click here to know more about catan",
+        url: "https://www.dicebreaker.com/games/catan-1/how-to/how-to-play-catan-board-game",
+      },
+      {
+        text: "Click here to buy catan",
+        url: "",
+      },
+    ],
+  },
+  {
+    description: "Got for terrific Tuesday",
+    referenceLink: [
+      {
+        text: "What's terrific Tuesday all about?",
+        url: "",
+      },
+    ],
+  },
+  {
+    description:
+      "Take a walk in your neighbourhood. You could buy some yam chips and khebab while at it!",
+    referenceLink: [],
+  },
+  {
+    description:
+      "Ride a bicycle around your neighbourhood: You should be staying at East Legon, Cantonments, Airport and the likes 😁",
+    referenceLink: [],
+  },
+  {
+    description: "Watch Netflix and chill ,or no chill 😉",
+    referenceLink: [],
+  },
+  {
+    description: "Start a YouTube channel; On a topic you fancy!",
+    referenceLink: [
+      {
+        text: "How to start a YouTube channel",
+        url: "",
+      },
+    ],
+  },
+  {
+    description: "Sunny day? Go to the Labadi beach",
+    referenceLink: [
+      {
+        text: "All about the Labadi beach in Accra",
+        url: "",
+      },
+    ],
+  },
 ];
 
 // Listen for http get request on /
