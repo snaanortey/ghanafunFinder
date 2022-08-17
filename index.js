@@ -4,7 +4,7 @@ const express = require("express");
 // Import file system
 const { writeFile } = require("node:fs/promises");
 
-//Import data from JSON to be read in js
+//Import data from JSON to be read in JavaScript
 const data = require("./data.json");
 
 // Import data from suggestions.json so it can be added to arrayOfSuggestedIdeas
@@ -23,8 +23,6 @@ boredAppServer.use(express.json());
 
 const port = 3000;
 
-
-
 // Listen for http get request on /random
 boredAppServer.get("/random", function (request, response) {
   const randomIndex = Math.round(Math.random() * (data.length - 1));
@@ -36,7 +34,6 @@ boredAppServer.get("/random", function (request, response) {
 
 // Allow users to suggest new activities via http POST requests on /suggest
 boredAppServer.post("/suggest", async function (request, response) {
-
   // The suggested activity is stored in the body of the http request
   const suggestedActivity = request.body;
 
@@ -48,7 +45,7 @@ boredAppServer.post("/suggest", async function (request, response) {
     response.status(400).send("Your suggestion is invalid. Please try again");
     return;
   }
- 
+
   // Add new suggested activity to an array
   arrayOfSuggestedIdeas.push(suggestedActivity);
 
@@ -56,16 +53,13 @@ boredAppServer.post("/suggest", async function (request, response) {
 
   //Save the array of suggested activities to the suggestions file (suggestions.json)
   const data = JSON.stringify(arrayOfSuggestedIdeas, null, 2);
-  const promise = writeFile("suggestions.json", data);
-  await promise;
 
-  
-  response.send("Suggestion received, let me go and sleep sucker!");
+  await writeFile("suggestions.json", data);
+
+  response.send("Suggestion received, thank you!");
 });
-
-
 
 // starting the App to listen for http request on port 3000
 boredAppServer.listen(port, function () {
-  console.log("my app is working, sucker");
+  console.log(`app now running on localhost ${port}`);
 });
