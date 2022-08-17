@@ -4,8 +4,11 @@ const express = require("express");
 // Import file system
 const { writeFile } = require("node:fs/promises");
 
-//Import data
+//Import data from JSON to be read in js
 const data = require("./data.json");
+
+// Import data from suggestions.json so it can be added to arrayOfSuggestedIdeas
+const arrayOfSuggestedIdeas = require("./suggestions.json");
 
 // Import util.js file
 const { isActivityValid } = require("./util");
@@ -20,7 +23,6 @@ boredAppServer.use(express.json());
 
 const port = 3000;
 
-const arrayOfSuggestedIdeas = [];
 
 
 // Listen for http get request on /random
