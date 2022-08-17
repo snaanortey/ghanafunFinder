@@ -1,6 +1,9 @@
 // Import express
 const express = require("express");
 
+// Import file system
+const { writeFile } = require("node:fs/promises");
+
 //Import data
 const data = require("./data.json");
 
@@ -17,6 +20,9 @@ boredAppServer.use(express.json());
 
 const port = 3000;
 
+const arrayOfSuggestedIdeas = [];
+
+
 // Listen for http get request on /random
 boredAppServer.get("/random", function (request, response) {
   const randomIndex = Math.round(Math.random() * (data.length - 1));
@@ -27,22 +33,35 @@ boredAppServer.get("/random", function (request, response) {
 });
 
 // Allow users to suggest new activities via http POST requests on /suggest
-boredAppServer.post("/suggest", function (request, response) {
+boredAppServer.post("/suggest", async function (request, response) {
+
+  // The suggested activity is stored in the body of the http request
   const suggestedActivity = request.body;
+
+  // Calling the function to check that the object passed to the funtion is valid
   const isValid = isActivityValid(suggestedActivity);
 
   //Validate the input from the user and return bad request if the input is invalid
-  if (isValid === false){
-    response.status(400).send("Your suggestion is invalid. Please try again")
+  if (isValid === false) {
+    response.status(400).send("Your suggestion is invalid. Please try again");
     return;
   }
+ 
+  // Add new suggested activity to an array
+  arrayOfSuggestedIdeas.push(suggestedActivity);
 
-  //Save the input data to the suggestions file (suggestions.json)
+  console.log(arrayOfSuggestedIdeas);
 
+  //Save the array of suggested activities to the suggestions file (suggestions.json)
+  const data = JSON.stringify(arrayOfSuggestedIdeas, null, 2);
+  const promise = writeFile("suggestions.json", data);
+  await promise;
 
-  response.send("Sugesstion resceived, let me go and sleep sucker!");
-
+  
+  response.send("Suggestion received, let me go and sleep sucker!");
 });
+
+
 
 // starting the App to listen for http request on port 3000
 boredAppServer.listen(port, function () {
