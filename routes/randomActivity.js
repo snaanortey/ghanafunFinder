@@ -1,16 +1,21 @@
 const express = require("express");
 
-//Import data from JSON to be read in JavaScript
-const data = require("../data.json");
+// Import mongoose model
+const ActivityModel = require("../models/activity");
 
 const app = express();
 
-app.get("/random", function (request, response) {
-  const randomIndex = Math.round(Math.random() * (data.length - 1));
+app.get("/random", async function (request, response) {
+  const aggregates = await ActivityModel.aggregate([{ $sample: { size: 1 } }]);
 
-  const randomActivity = data[randomIndex];
+  const activity = {
+    description: aggregates[0].description,
+    references: aggregates[0].references,
+  };
 
-  response.send(randomActivity);
+  console.log(activity);
+
+  response.send(activity);
 });
 
 module.exports = app;

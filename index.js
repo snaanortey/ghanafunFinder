@@ -1,11 +1,27 @@
 // Import express
 const express = require("express");
 
+const mongoose = require("mongoose");
+
 // Import random activity route
 const randomActivity = require("./routes/randomActivity");
 
 // Import suggested activity route
 const suggestActivity = require("./routes/suggestActivity");
+
+// Connects server to mongodb compass and atlas
+const connectionstring =
+  "mongodb+srv://user:<password>@<clustername>.mongodb.net/<dbname>?retryWrites=true&w=majority";
+mongoose.connect(
+  connectionstring,
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  },
+  function () {
+    console.log("Successfully connected to database.");
+  }
+);
 
 const port = 3000;
 
