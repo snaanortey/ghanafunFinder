@@ -1,10 +1,8 @@
 const mongoose = require("mongoose");
 
-const urlSchema = {
-  type: String,
-  required: false,
-  match: /^(ftp|http|https):\/\/[^ "]+$/,
-};
+// Import description and url schema configuration from util.js file
+const { descriptionSchemaConfig, urlSchemaConfig } = require("../util");
+
 /* 
 Mongoose schema definition. See - https://mongoosejs.com/docs/guide.html#definition
 
@@ -16,13 +14,8 @@ URL: The url value is an array of type string(s) and is not required, but when i
 
 */
 const suggestionSchema = new mongoose.Schema({
-  description: {
-    type: String,
-    required: true,
-    trim: true,
-    maxLength: 250,
-  },
-  url: [urlSchema],
+  description: descriptionSchemaConfig,
+  url: [urlSchemaConfig],
 });
 
 const suggestionModel = mongoose.model("suggestion", suggestionSchema);

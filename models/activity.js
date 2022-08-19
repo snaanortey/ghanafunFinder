@@ -1,6 +1,10 @@
 // Import mongoose library
 const mongoose = require("mongoose");
 
+// Import description and url schema configuration from util.js file
+const {descriptionSchemaConfig, urlSchemaConfig} = require("../util");
+
+
 /* 
 Mongoose schema definition. See - https://mongoosejs.com/docs/guide.html#definition
 
@@ -18,11 +22,7 @@ const referenceSchema = new mongoose.Schema({
       return this.url.length > 0;
     },
   },
-  url: {
-    type: String,
-    required: false,
-    match: /^(ftp|http|https):\/\/[^ "]+$/,
-  },
+  url: urlSchemaConfig,
 });
 
 /* 
@@ -31,12 +31,7 @@ Defines activity schema to consist of a description value that is of type string
 trim any whitespace and will have a default of less than 250 characters. 
 */
 const activitySchema = new mongoose.Schema({
-  description: {
-    type: String,
-    required: true,
-    trim: true,
-    maxLength: 250,
-  },
+  description: descriptionSchemaConfig,
   references: [referenceSchema],
 });
 

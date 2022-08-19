@@ -30,6 +30,21 @@ function isActivityValid(activity) {
   return true;
 }
 
+const descriptionSchemaConfig = {
+  type: String,
+  required: true,
+  trim: true,
+  maxLength: 250,
+};
+
+const urlSchemaConfig = {
+  type: String,
+  required: false,
+  match: /^(ftp|http|https):\/\/[^ "]+$/,
+};
+
 module.exports = {
   isActivityValid,
+  descriptionSchemaConfig,
+  urlSchemaConfig,
 };
