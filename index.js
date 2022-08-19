@@ -11,8 +11,7 @@ const suggestActivity = require("./routes/suggestActivity");
 
 // Connects the API server to MongoDB Atlas
 const connectionstring =
-"mongodb+srv://user:v3sa5ITmqdvvfffD@cluster0.ksedvtj.mongodb.net/funThingsGhana?retryWrites=true&w=majority";
-  // "mongodb+srv://user:<password>@<clustername>.mongodb.net/<dbname>?retryWrites=true&w=majority";
+  "mongodb+srv://user:<password>@<clustername>.mongodb.net/<dbname>?retryWrites=true&w=majority";
 mongoose.connect(
   connectionstring,
   {
