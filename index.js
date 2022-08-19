@@ -6,7 +6,7 @@ const mongoose = require("mongoose");
 // Import random activity route
 const randomActivity = require("./routes/randomActivity");
 
-// Import suggested activity route
+// Import suggest activity route
 const suggestActivity = require("./routes/suggestActivity");
 
 // Connects the API server to MongoDB Atlas
