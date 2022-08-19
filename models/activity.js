@@ -21,9 +21,7 @@ const referenceSchema = new mongoose.Schema({
   url: {
     type: String,
     required: false,
-    validate(value) {
-      return /^(ftp|http|https):\/\/[^ "]+$/.test(value);
-    },
+    match: /^(ftp|http|https):\/\/[^ "]+$/,
   },
 });
 
@@ -37,13 +35,7 @@ const activitySchema = new mongoose.Schema({
     type: String,
     required: true,
     trim: true,
-    validate(value) {
-      if (value.length > 250) {
-        throw new Error(
-          "Description is too long. Must be less than 250 characters."
-        );
-      }
-    },
+    maxLength: 250,
   },
   references: [referenceSchema],
 });

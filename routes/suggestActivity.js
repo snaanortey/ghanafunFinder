@@ -25,7 +25,6 @@ app.post("/suggest", async function (request, response) {
   try {
     await suggestedActivity.save();
     response.send("Suggestion received, thank you!");
-    console.log("try done");
 
     // Any other error is caught and generates an invalid error response
   } catch (error) {
