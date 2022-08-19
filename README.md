@@ -31,7 +31,7 @@ Content-Length: 133
    ```
     git clone https://github.com/snaanortey/ghanafunFinder.git
    ```
-2. Install dependencies by running 
+2. Install `the npm` dependencies by running 
    ```sh
     npm install
    ```
