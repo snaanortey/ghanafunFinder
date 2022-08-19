@@ -21,7 +21,11 @@ mongoose.connect(
     useNewUrlParser: true,
     useUnifiedTopology: true,
   },
-  function () {
+  function (err) {
+    if (err) {
+      console.error("Database connection faile", err);
+      return;
+    }
     console.log("Successfully connected to database.");
   }
 );
