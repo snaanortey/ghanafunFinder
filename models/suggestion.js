@@ -1,14 +1,10 @@
 const mongoose = require("mongoose");
 
-// Child schema of parent url array
-const urlSchema = new mongoose.Schema({
+const urlSchema = {
   type: String,
   required: false,
-  validate(value) {
-    return /^(ftp|http|https):\/\/[^ "]+$/.test(value);
-  },
-});
-
+  match: /^(ftp|http|https):\/\/[^ "]+$/,
+};
 /* 
 Mongoose schema definition. See - https://mongoosejs.com/docs/guide.html#definition
 
@@ -24,13 +20,7 @@ const suggestionSchema = new mongoose.Schema({
     type: String,
     required: true,
     trim: true,
-    validate(value) {
-      if (value.length > 250) {
-        throw new Error(
-          "Description is too long. Characters should be less than 250."
-        );
-      }
-    },
+    maxLength: 250,
   },
   url: [urlSchema],
 });

@@ -13,8 +13,6 @@ app.get("/random", async function (request, response) {
     references: aggregates[0].references,
   };
 
-  console.log(activity);
-
   response.send(activity);
 });
 

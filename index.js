@@ -9,9 +9,10 @@ const randomActivity = require("./routes/randomActivity");
 // Import suggested activity route
 const suggestActivity = require("./routes/suggestActivity");
 
-// Connects server to mongodb compass and atlas
+// Connects the API server to MongoDB Atlas
 const connectionstring =
-  "mongodb+srv://user:<password>@<clustername>.mongodb.net/<dbname>?retryWrites=true&w=majority";
+"mongodb+srv://user:v3sa5ITmqdvvfffD@cluster0.ksedvtj.mongodb.net/funThingsGhana?retryWrites=true&w=majority";
+  // "mongodb+srv://user:<password>@<clustername>.mongodb.net/<dbname>?retryWrites=true&w=majority";
 mongoose.connect(
   connectionstring,
   {
