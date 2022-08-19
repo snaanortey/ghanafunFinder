@@ -1,3 +1,7 @@
+// Loads config from .env file into process.env
+require('dotenv').config()
+console.log(process.env)
+
 // Import express
 const express = require("express");
 
@@ -10,8 +14,8 @@ const randomActivity = require("./routes/randomActivity");
 const suggestActivity = require("./routes/suggestActivity");
 
 // Connects the API server to MongoDB Atlas
-const connectionstring =
-  "mongodb+srv://user:<password>@<clustername>.mongodb.net/<dbname>?retryWrites=true&w=majority";
+const connectionstring = process.env.CONNECTIONS_STRING;
+  
 mongoose.connect(
   connectionstring,
   {
@@ -23,7 +27,7 @@ mongoose.connect(
   }
 );
 
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 // Create an instance of an express app
 const server = express();
@@ -42,4 +46,4 @@ server.use(suggestActivity);
 // starting the App to listen for http request on port 3000
 server.listen(port, function () {
   console.log(`app now running on localhost ${port}`);
-});
+}); 
