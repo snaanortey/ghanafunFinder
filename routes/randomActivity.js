@@ -8,6 +8,7 @@ const app = express();
 app.get("/random", async function (request, response) {
   const aggregates = await ActivityModel.aggregate([{ $sample: { size: 1 } }]);
 
+  // Transform the aggregate array to an object
   const activity = {
     description: aggregates[0].description,
     references: aggregates[0].references,
