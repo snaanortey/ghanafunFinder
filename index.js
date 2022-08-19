@@ -13,7 +13,7 @@ const randomActivity = require("./routes/randomActivity");
 const suggestActivity = require("./routes/suggestActivity");
 
 // Connects the API server to MongoDB Atlas
-const { CONNECTIONS_STRING, PORT = 3000 } = process.env;
+const { CONNECTIONS_STRING, PORT = 4000 } = process.env;
 
 mongoose.connect(
   CONNECTIONS_STRING,
