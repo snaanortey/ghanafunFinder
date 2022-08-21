@@ -23,7 +23,7 @@ mongoose.connect(
   },
   function (err) {
     if (err) {
-      console.error("Database connection faile", err);
+      console.error("Database connection failed", err);
       return;
     }
     console.log("Successfully connected to database.");
