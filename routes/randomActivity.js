@@ -5,7 +5,7 @@ const ActivityModel = require("../models/activity");
 
 const app = express();
 
-app.get("/random", async function (request, response) {
+async function randomRouteHandler(request, response) {
   const aggregates = await ActivityModel.aggregate([{ $sample: { size: 1 } }]);
 
   // Because we requested a sample size of 1, so we extract our response as the first item of the aggregate response array
@@ -15,6 +15,9 @@ app.get("/random", async function (request, response) {
   };
 
   response.send(activity);
-});
+}
+
+// When the app receives a GET HTTP request on the /random route, the randomRouteHandler function will be called
+app.get("/random", randomRouteHandler);
 
 module.exports = app;
