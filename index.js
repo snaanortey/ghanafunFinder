@@ -39,6 +39,7 @@ mongoose.connect(
 // Create an instance of an express app
 const server = express();
 
+// Enable CORS
 server.use(cors());
 
 // for parsing application/json; see link >> https://expressjs.com/en/api.html#req.body
@@ -52,9 +53,14 @@ server.use(randomActivity);
 // Register the random activity route to be used here
 server.use(suggestActivity);
 
-// Register the serve HTML route to be used here
+// Register the server HTML route to be used here
 server.use(serveHTML);
-server.use('/frontend', express.static('frontend'))
+
+/* 
+To serve static files such CSS and JavaScript files in the frontend folder, use the express.static built-in 
+middleware function in Express. More here >> https://expressjs.com/en/starter/static-files.html 
+*/
+server.use("/frontend", express.static("frontend"));
 
 // starting the App to listen for http request on port 3000
 server.listen(PORT, function () {

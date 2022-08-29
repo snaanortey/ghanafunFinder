@@ -1,14 +1,14 @@
 /*
 This is a promise of extracting the response body as JSON format from the server, 
-and then, calss the populateDescription function  
+and then, calls the populateFunActivities function  
 */
 function processFetchedData(response) {
   const serverResponse = response.json();
-  serverResponse.then(populateDescription);
+  serverResponse.then(populateFunActivities);
 }
 
 // This function is to put description and references in html
-function populateDescription(data) {
+function populateFunActivities(data) {
   document.getElementById("description").innerText = data.description;
 
   for (let i = 0; i < data.references.length; i++) {
