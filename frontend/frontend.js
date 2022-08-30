@@ -7,7 +7,7 @@ function processFetchedData(response) {
   serverResponse.then(populateFunActivities);
 }
 
-// This function is to put description and references of random suggested activity in html
+// This function is to put description and references in html
 function populateFunActivities(data) {
   document.getElementById("description").innerText = data.description;
 

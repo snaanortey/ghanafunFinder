@@ -40,7 +40,7 @@ Content-Length: 133
    mv .env.example .env
    ```
 
-4. Run app 
+4. Run app in development mode
    ```
-    npm start
+    npm run start:dev
    ```
