@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>API_FunThingsToDo</title>
+    <style src="styles.css"></style>
+  </head>
+  <body>
+    <div id="description"></div>
+
+    <form
+      action="https://guarded-falls-15237.herokuapp.com/suggest"
+      method="post"
+    >
+      <div>
+        <label for="description">
+          <h2>Please suggest an activity to do in Ghana</h2>
+          <p>E.g. Take a hike up the Aburi mountain</p>
+        </label>
+
+        <textarea
+          name="description"
+          id="description"
+          cols="50"
+          rows="5"
+        ></textarea>
+      </div>
+      <div id="references">
+        <label for="url">
+          <h2>Include a link/ links for the suggested activity</h2>
+
+          <p>
+            E.g.
+            <a
+              href="https://www.sabarytours.com/tour-details?details=NQ==&the-aburi-experience"
+              >https://www.sabarytours.com/tour-details?details=NQ==&the-aburi-experience</a
+            >
+          </p>
+        </label>
+
+        <textarea name="url" id="url" cols="50" rows="3"></textarea>
+
+        <label for="urltext">
+          <h2>What is your link(s) about?</h2>
+
+          <p>E.g. How to book for an Aburi mountain hike</p>
+        </label>
+
+        <textarea name="urltext" id="urltext" cols="50" rows="3"></textarea>
+      </div>
+      <div id="moreReference"></div>
+      
+
+      <div>
+        <button id="moreForms">Add more links</button>
+      </div>
+
+      <input type="submit" value="Submit">
+    </form>
+
+    <script src="frontend/randomActivity.js"></script>
+    <script src="./frontend/suggestActivity.js"></script>
+  </body>
+</html>
